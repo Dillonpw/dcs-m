@@ -47,13 +47,13 @@ export default function AgeCalc() {
     }
   };
   return (
-    <View className="flex flex-1 bg-white dark:bg-black">
+    <View className="flex flex-1 bg-white dark:bg-black ">
       <Header />
 
-      <View className="flex flex-row items-center justify-center">
-        <Text>Birth Year:</Text>
+      <View className="flex flex-row items-center justify-center ">
+        <Text className="dark:text-white">Birth Year:</Text>
         <TextInput
-          className="m-4 w-[30%] rounded-lg border border-gray-300 p-2"
+          className="m-4 w-[30%] rounded-lg border border-gray-300 p-2 dark:text-white"
           onChangeText={setYear}
           value={year}
           keyboardType="numeric"
@@ -62,14 +62,13 @@ export default function AgeCalc() {
       </View>
       <View className="flex flex-col items-center justify-center">
         <Pressable
-          className="w-[30%] rounded-lg bg-black"
+          className="w-[30%] rounded-lg bg-black dark:bg-slate-100"
           onPress={handleSubmit}
         >
-          <Text className="p-4 text-center text-white">Submit</Text>
+          <Text className="p-4 text-center font-bold text-white dark:text-black">Submit</Text>
         </Pressable>
-        <Text>{result}</Text>
+        <Text className=" m-2 text-3xl font-bold dark:text-white">{result}</Text>
       </View>
-
       <Footer />
     </View>
   );

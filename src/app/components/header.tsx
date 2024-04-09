@@ -8,26 +8,26 @@ export default function Header() {
         <View style={{ paddingTop: top }}>
             <View className="px-4 lg:px-6 h-14 flex items-center flex-row justify-between ">
                 <Link
-                    className="font-bold flex-1 items-center justify-center"
+                    className="font-bold flex-1 items-center justify-center dark:text-white"
                     href="/"
                 >
                     DCS
                 </Link>
                 <View className="flex flex-row gap-4 sm:gap-6">
                     <Link
-                        className="text-md font-medium hover:underline web:underline-offset-4"
+                        className="text-md font-medium hover:underline web:underline-offset-4 dark:text-white"
                         href="/schedule"
                     >
                         schedule
                     </Link>
                     <Link
-                        className="text-md font-medium hover:underline web:underline-offset-4"
+                        className="text-md font-medium hover:underline web:underline-offset-4 dark:text-white"
                         href="/ageCalc"
                     >
                        Age
                     </Link>
                     <Link
-                        className="text-md font-medium hover:underline web:underline-offset-4"
+                        className="text-md font-medium hover:underline web:underline-offset-4 dark:text-white"
                         href="/"
                     >
                         Pricing
