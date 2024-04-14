@@ -1,4 +1,3 @@
-/*not ready
 import React, { useState } from "react";
 import {
   View,
@@ -6,7 +5,6 @@ import {
   TextInput,
   Button,
   ScrollView,
-  StyleSheet,
   Platform,
 } from "react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
@@ -46,7 +44,7 @@ const generateRotatingSchedule = (workDays, offDays, totalDays, startDate) => {
   return schedule;
 };
 
-const App = () => {
+const Schedule = () => {
   const [workDays, setWorkDays] = useState("");
   const [offDays, setOffDays] = useState("");
   const [totalDays, setTotalDays] = useState("");
@@ -67,38 +65,38 @@ const App = () => {
   return (
     <View>
       <Header />
-      <ScrollView style={styles.container}>
-        <View style={styles.inputGroup}>
+      <ScrollView>
+        <View >
           <Text>Work Days:</Text>
           <TextInput
-            style={styles.input}
+            
             keyboardType="numeric"
             placeholder="4"
             value={workDays}
             onChangeText={setWorkDays}
           />
         </View>
-        <View style={styles.inputGroup}>
+        <View>
           <Text>Off Days:</Text>
           <TextInput
-            style={styles.input}
+
             keyboardType="numeric"
             placeholder="2"
             value={offDays}
             onChangeText={setOffDays}
           />
         </View>
-        <View style={styles.inputGroup}>
+        <View >
           <Text>Total Days:</Text>
           <TextInput
-            style={styles.input}
+           
             keyboardType="numeric"
             placeholder="90"
             value={totalDays}
             onChangeText={setTotalDays}
           />
         </View>
-        <View style={styles.inputGroup}>
+        <View>
           <Text>Start Date:</Text>
           <Button title="Select Date" onPress={() => setShowPicker(true)} />
           {showPicker && (
@@ -115,15 +113,15 @@ const App = () => {
           )}
         </View>
         <Button title="Show Schedule" onPress={handleGenerateSchedule} />
-        <View style={styles.table}>
-          <Text style={styles.tableHeader}>Week Day</Text>
-          <Text style={styles.tableHeader}>Date</Text>
-          <Text style={styles.tableHeader}>On/Off</Text>
+        <View>
+          <Text>Week Day</Text>
+          <Text>Date</Text>
+          <Text>On/Off</Text>
           {schedule.map((entry, index) => (
-            <View key={index} style={styles.tableRow}>
-              <Text style={styles.tableCell}>{entry.dayOfWeek}</Text>
-              <Text style={styles.tableCell}>{entry.date}</Text>
-              <Text style={styles.tableCell}>{entry.shift}</Text>
+            <View key={index}>
+              <Text>{entry.dayOfWeek}</Text>
+              <Text>{entry.date}</Text>
+              <Text>{entry.shift}</Text>
             </View>
           ))}
         </View>
@@ -133,42 +131,4 @@ const App = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 10,
-  },
-  inputGroup: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    marginVertical: 5,
-  },
-  input: {
-    borderWidth: 1,
-    borderColor: "#ddd",
-    padding: 10,
-    margin: 5,
-    width: 200,
-  },
-  table: {
-    marginTop: 20,
-  },
-  tableHeader: {
-    fontWeight: "bold",
-    color: "#444",
-    minWidth: 80,
-    textAlign: "center",
-  },
-  tableRow: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginTop: 10,
-  },
-  tableCell: {
-    minWidth: 80,
-    textAlign: "center",
-  },
-});
-
-export default App; */
+export default Schedule;
