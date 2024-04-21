@@ -6,6 +6,7 @@ import {
   Button,
   ScrollView,
   Platform,
+  Pressable,
 } from "react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import Header from "./components/header";
@@ -65,68 +66,77 @@ const Schedule = () => {
   return (
     <View className="flex flex-1 bg-white dark:bg-black">
       <Header />
-        <View >
-          <Text>Work Days:</Text>
-          <TextInput
-            
-            keyboardType="numeric"
-            placeholder="4"
-            value={workDays}
-            onChangeText={setWorkDays}
+      <View className="flex-row justify-center text-black dark:text-white">
+        <Text>Work Days:</Text>
+        <TextInput
+          className="text-black dark:text-white"
+          keyboardType="numeric"
+          placeholder="4"
+          value={workDays}
+          onChangeText={setWorkDays}
+        />
+      </View>
+      <View className="flex-row justify-center text-black dark:text-white">
+        <Text>Off Days:</Text>
+        <TextInput
+          className="text-black dark:text-white"
+          keyboardType="numeric"
+          placeholder="2"
+          value={offDays}
+          onChangeText={setOffDays}
+        />
+      </View>
+      <View className="flex-row justify-center text-black dark:text-white">
+        <Text>Total Days:</Text>
+        <TextInput
+          className="text-black dark:text-white"
+          keyboardType="numeric"
+          placeholder="90"
+          value={totalDays}
+          onChangeText={setTotalDays}
+        />
+      </View>
+      <View className="flex-col items-center justify-center text-black dark:text-white">
+        <Text>Start Date:</Text>
+        <Button title="Select Date" onPress={() => setShowPicker(true)} />
+        {showPicker && (
+          <DateTimePicker
+            value={startDate}
+            mode="date"
+            display="default"
+            onChange={(event, selectedDate) => {
+              const currentDate = selectedDate || startDate;
+              setShowPicker(Platform.OS === "ios");
+              setStartDate(currentDate);
+            }}
           />
+        )}
+      </View>
+      <View className="flex justify-center items-center">
+        <Pressable
+          className=" w-[30%] rounded-lg bg-blue-50 p-4 hover:bg-blue-300"
+          onPress={handleGenerateSchedule}
+        >
+          <Text className="text-center text-xl">Show</Text>
+        </Pressable>
+      </View>
+      <ScrollView className="m-4 border-4 border-gray-300 rounded-2xl">
+      <View className="p-4 grid grid-cols-3 gap-4">
+        <View className="flex flex-row justify-between">
+        <Text className="ml-4 font-bold">Week Day</Text>
+        <Text className="font-bold">Date</Text>
+        <Text className="mr-4 font-bold">On/Off</Text>
         </View>
-        <View>
-          <Text>Off Days:</Text>
-          <TextInput
-
-            keyboardType="numeric"
-            placeholder="2"
-            value={offDays}
-            onChangeText={setOffDays}
-          />
-        </View>
-        <View >
-          <Text>Total Days:</Text>
-          <TextInput
-           
-            keyboardType="numeric"
-            placeholder="90"
-            value={totalDays}
-            onChangeText={setTotalDays}
-          />
-        </View>
-        <View>
-          <Text>Start Date:</Text>
-          <Button title="Select Date" onPress={() => setShowPicker(true)} />
-          {showPicker && (
-            <DateTimePicker
-              value={startDate}
-              mode="date"
-              display="default"
-              onChange={(event, selectedDate) => {
-                const currentDate = selectedDate || startDate;
-                setShowPicker(Platform.OS === "ios");
-                setStartDate(currentDate);
-              }}
-            />
-          )}
-        </View>
-        <Button title="Show Schedule" onPress={handleGenerateSchedule} />
-      <ScrollView>
-
-        <View>
-          <Text>Week Day</Text>
-          <Text>Date</Text>
-          <Text>On/Off</Text>
-          {schedule.map((entry, index) => (
-            <View key={index}>
-              <Text>{entry.dayOfWeek}</Text>
-              <Text>{entry.date}</Text>
-              <Text>{entry.shift}</Text>
-            </View>
-          ))}
-        </View>
-      </ScrollView>
+        {/* Data Entries */}
+        {schedule.map((entry, index) => (
+          <View key={index} className="flex flex-row justify-between w-full">
+            <Text className="text-center w-1/3">{entry.dayOfWeek}</Text>
+            <Text className="text-center w-1/3">{entry.date}</Text>
+            <Text className="text-center w-1/3">{entry.shift}</Text>
+          </View>
+        ))}
+      </View>
+    </ScrollView>
       <Footer />
     </View>
   );
