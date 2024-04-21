@@ -1,18 +1,32 @@
-import { Text, View } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { View, Text } from "react-native";
+import { Link } from "expo-router";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function Footer() {
-    const { bottom } = useSafeAreaInsets();
-    return (
-        <View
-            className="flex shrink-0 bg-gray-100 native:hidden"
-            style={{ paddingBottom: bottom }}
-        >
-            <View className="py-6 flex-1 items-start px-4 md:px-6 ">
-                <Text className={'text-center text-gray-700'}>
-                    © {new Date().getFullYear()} Me
-                </Text>
-            </View>
+  const { bottom } = useSafeAreaInsets();
+  return (
+    <View
+      className="flex shrink-0 bg-gray-100"
+      style={{ paddingBottom: bottom }}
+    >
+      <View className="flex h-14 items-center justify-between px-4 lg:px-6">
+        <View className="flex flex-row gap-4 mt-2 sm:gap-6 ">
+          <Link className="text-xl" href="/schedule">
+            Schedule
+          </Link>
+          <Text className="mt-1">|</Text>
+
+          <Link className="text-xl " href="/ageCalc">
+            Age
+          </Link>
+          <Text className="mt-1">|</Text>
+
+
+          <Link className="text-xl " href="/">
+            Pricing
+          </Link>
         </View>
-    );
+      </View>
+    </View>
+  );
 }

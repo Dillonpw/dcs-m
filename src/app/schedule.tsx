@@ -63,9 +63,8 @@ const Schedule = () => {
   };
 
   return (
-    <View>
+    <View className="flex flex-1 bg-white dark:bg-black">
       <Header />
-      <ScrollView>
         <View >
           <Text>Work Days:</Text>
           <TextInput
@@ -113,6 +112,8 @@ const Schedule = () => {
           )}
         </View>
         <Button title="Show Schedule" onPress={handleGenerateSchedule} />
+      <ScrollView>
+
         <View>
           <Text>Week Day</Text>
           <Text>Date</Text>

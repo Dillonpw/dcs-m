@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, TextInput, Button, Pressable } from "react-native";
+import { View, Text, TextInput, Pressable } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Header from "./components/header";
 import Footer from "./components/footer";
@@ -26,13 +26,13 @@ export default function AgeCalc() {
     fetchAndSetData();
   }, []);
 
-  const calculateAndDisplayResult = (inputYear) => {
+  const calculateAndDisplayResult = (inputYear: string) => {
     const age = new Date().getFullYear() - parseInt(inputYear);
     setResult(`Patient is: ${age}`);
     saveData(inputYear, age.toString());
   };
 
-  const saveData = async (year, result) => {
+  const saveData = async (year: string, result: string) => {
     try {
       await AsyncStorage.setItem("year", year);
       await AsyncStorage.setItem("result", result);
@@ -47,27 +47,30 @@ export default function AgeCalc() {
     }
   };
   return (
-    <View className="flex flex-1 bg-white dark:bg-black ">
+    <View className="flex flex-1 bg-white dark:bg-black">
       <Header />
 
-      <View className="flex flex-row items-center justify-center ">
-        <Text className="dark:text-white">Birth Year:</Text>
+      <View className="flex flex-1 flex-col gap-4 items-center justify-center ">
+        <Text className="dark:text-white text-2xl">Birth Year:</Text>
         <TextInput
-          className="m-4 w-[30%] rounded-lg border border-gray-300 p-2 dark:text-white"
+          className="m-4 w-[30%] rounded-lg border-2 text-center text-xl border-gray-300 p-2 dark:text-white"
           onChangeText={setYear}
           value={year}
           keyboardType="numeric"
           maxLength={4}
         />
-      </View>
-      <View className="flex flex-col items-center justify-center">
         <Pressable
           className="w-[30%] rounded-lg bg-black dark:bg-slate-100"
           onPress={handleSubmit}
         >
-          <Text className="p-4 text-center font-bold text-white dark:text-black">Submit</Text>
+          <Text className="p-4 text-center font-bold text-white dark:text-black">
+            Submit
+          </Text>
         </Pressable>
-        <Text className=" m-2 text-3xl font-bold dark:text-white">{result}</Text>
+        <Text className=" m-2 text-3xl font-bold dark:text-white">
+          {result}
+        </Text>
+        <Text>If the patient's birthday has not occured this year, subtract 1</Text>
       </View>
       <Footer />
     </View>
