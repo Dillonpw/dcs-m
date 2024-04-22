@@ -17,5 +17,9 @@
     ],
     "name": "dcs-m",
     "slug": "dcs-m"
+  },
+  "react-native-google-mobile-ads": {
+    "android_app_id": "ca-app-pub-xxxxxxxx~xxxxxxxx",
+    "ios_app_id": "ca-app-pub-4500026491096816~2082008240"
   }
 }
