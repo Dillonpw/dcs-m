@@ -112,7 +112,7 @@ const Schedule = () => {
           />
         )}
       </View>
-      <View className="flex justify-center items-center">
+      <View className="flex items-center justify-center">
         <Pressable
           className=" w-[30%] rounded-lg bg-blue-50 p-4 hover:bg-blue-300"
           onPress={handleGenerateSchedule}
@@ -120,23 +120,28 @@ const Schedule = () => {
           <Text className="text-center text-xl">Show</Text>
         </Pressable>
       </View>
-      <ScrollView className="m-4 border-4 border-gray-300 rounded-2xl">
-      <View className="p-4 grid grid-cols-3 gap-4">
-        <View className="flex flex-row justify-between">
-        <Text className="ml-4 font-bold">Week Day</Text>
-        <Text className="font-bold">Date</Text>
-        <Text className="mr-4 font-bold">On/Off</Text>
-        </View>
-        {/* Data Entries */}
-        {schedule.map((entry, index) => (
-          <View key={index} className="flex flex-row justify-between w-full">
-            <Text className="text-center w-1/3">{entry.dayOfWeek}</Text>
-            <Text className="text-center w-1/3">{entry.date}</Text>
-            <Text className="text-center w-1/3">{entry.shift}</Text>
+      <ScrollView className="m-4 rounded-2xl border-4 border-gray-300">
+        <View className="grid grid-cols-3 gap-2 p-4">
+          <View className="flex flex-row justify-between">
+            <Text className="ml-4 font-bold">Week Day</Text>
+            <Text className="font-bold">Date</Text>
+            <Text className="mr-4 font-bold">On/Off</Text>
           </View>
-        ))}
-      </View>
-    </ScrollView>
+          {/* Data Entries */}
+          {schedule.map((entry, index) => (
+            <View
+              key={index}
+              className="flex w-full flex-row justify-between bg-slate-100 p-4"
+            >
+              <Text className="w-1/3 text-center font-bold">
+                {entry.dayOfWeek}
+              </Text>
+              <Text className="w-1/3 text-center font-bold">{entry.date}</Text>
+              <Text className="w-1/3 text-center font-bold">{entry.shift}</Text>
+            </View>
+          ))}
+        </View>
+      </ScrollView>
       <Footer />
     </View>
   );
