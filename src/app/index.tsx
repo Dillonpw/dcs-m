@@ -66,14 +66,15 @@ const Schedule = () => {
   return (
     <View
       style={{ paddingTop: top }}
-      className="flex-1 mb-11 mt-11 flex gap-4 bg-white dark:bg-black"
+      className="mb-11 mt-11 flex flex-1 gap-4 bg-white dark:bg-black"
     >
       <View className="flex-row justify-center">
         <Text className="mr-4 text-xl text-black dark:text-white">
           Work Days:
         </Text>
         <TextInput
-          className="text-xl text-black dark:text-white border-gray-500 text-center border-2 w-[50px] rounded-lg"          keyboardType="numeric"
+          className="w-[50px] rounded-lg border-2 border-gray-500 text-center text-xl text-black dark:text-white"
+          keyboardType="numeric"
           placeholder="4"
           maxLength={2}
           value={workDays}
@@ -85,7 +86,8 @@ const Schedule = () => {
           Off Days:
         </Text>
         <TextInput
-          className="text-xl text-black dark:text-white border-gray-500 text-center border-2 w-[50px] rounded-lg"          keyboardType="numeric"
+          className="w-[50px] rounded-lg border-2 border-gray-500 text-center text-xl text-black dark:text-white"
+          keyboardType="numeric"
           maxLength={2}
           placeholder="2"
           value={offDays}
@@ -97,7 +99,7 @@ const Schedule = () => {
           Total Days:
         </Text>
         <TextInput
-          className="text-xl text-black dark:text-white border-gray-500 text-center border-2 w-[50px] rounded-lg"
+          className="w-[50px] rounded-lg border-2 border-gray-500 text-center text-xl text-black dark:text-white"
           keyboardType="numeric"
           maxLength={3}
           placeholder="90"
