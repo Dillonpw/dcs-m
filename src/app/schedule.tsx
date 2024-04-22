@@ -3,7 +3,6 @@ import {
   View,
   Text,
   TextInput,
-  Button,
   ScrollView,
   Platform,
   Pressable,
@@ -64,22 +63,26 @@ const Schedule = () => {
   };
 
   return (
-    <View className="flex flex-1 bg-white dark:bg-black">
+    <View className="flex flex-1 gap-4 bg-white dark:bg-black">
       <Header />
-      <View className="flex-row justify-center text-black dark:text-white">
-        <Text>Work Days:</Text>
+      <View className="flex-row justify-center">
+        <Text className="mr-2 text-xl text-black dark:text-white">
+          Work Days:
+        </Text>
         <TextInput
-          className="text-black dark:text-white"
+          className="text-xl text-black dark:text-white"
           keyboardType="numeric"
           placeholder="4"
           value={workDays}
           onChangeText={setWorkDays}
         />
       </View>
-      <View className="flex-row justify-center text-black dark:text-white">
-        <Text>Off Days:</Text>
+      <View className="flex-row justify-center ">
+        <Text className="mr-2 text-xl text-black dark:text-white">
+          Off Days:
+        </Text>
         <TextInput
-          className="text-black dark:text-white"
+          className="text-xl text-black dark:text-white"
           keyboardType="numeric"
           placeholder="2"
           value={offDays}
@@ -87,9 +90,11 @@ const Schedule = () => {
         />
       </View>
       <View className="flex-row justify-center text-black dark:text-white">
-        <Text>Total Days:</Text>
+        <Text className="mr-2 text-xl text-black dark:text-white">
+          Total Days:
+        </Text>
         <TextInput
-          className="text-black dark:text-white"
+          className="text-xl text-black dark:text-white"
           keyboardType="numeric"
           placeholder="90"
           value={totalDays}
@@ -97,24 +102,22 @@ const Schedule = () => {
         />
       </View>
       <View className="flex-col items-center justify-center text-black dark:text-white">
-        <Text>Start Date:</Text>
-        <Button title="Select Date" onPress={() => setShowPicker(true)} />
-        {showPicker && (
-          <DateTimePicker
-            value={startDate}
-            mode="date"
-            display="default"
-            onChange={(event, selectedDate) => {
-              const currentDate = selectedDate || startDate;
-              setShowPicker(Platform.OS === "ios");
-              setStartDate(currentDate);
-            }}
-          />
-        )}
+        <Text className="text-xl text-black dark:text-white">Start Date:</Text>
+        <DateTimePicker
+          className="text-black dark:text-white"
+          value={startDate}
+          mode="date"
+          display="calendar"
+          onChange={(event, selectedDate) => {
+            const currentDate = selectedDate || startDate;
+            setShowPicker(Platform.OS === "ios");
+            setStartDate(currentDate);
+          }}
+        />
       </View>
       <View className="flex items-center justify-center">
         <Pressable
-          className=" w-[30%] rounded-lg bg-blue-50 p-4 hover:bg-blue-300"
+          className="flex items-center justify-center rounded-lg border-2 border-black bg-blue-50 px-12 py-4 dark:border-gray-200"
           onPress={handleGenerateSchedule}
         >
           <Text className="text-center text-xl">Show</Text>
@@ -123,9 +126,9 @@ const Schedule = () => {
       <ScrollView className="m-4 rounded-2xl border-4 border-gray-300">
         <View className="grid grid-cols-3 gap-2 p-4">
           <View className="flex flex-row justify-between">
-            <Text className="ml-4 font-bold">Week Day</Text>
-            <Text className="font-bold">Date</Text>
-            <Text className="mr-4 font-bold">On/Off</Text>
+            <Text className="m-4 font-bold dark:text-white">Week Day</Text>
+            <Text className=" m-4 font-bold dark:text-white">Date</Text>
+            <Text className="m-4 font-bold dark:text-white">On/Off</Text>
           </View>
           {/* Data Entries */}
           {schedule.map((entry, index) => (
@@ -133,11 +136,13 @@ const Schedule = () => {
               key={index}
               className="flex w-full flex-row justify-between bg-slate-100 p-4"
             >
-              <Text className="w-1/3 text-center font-bold">
+              <Text className="w-1/3 text-center font-bold ">
                 {entry.dayOfWeek}
               </Text>
               <Text className="w-1/3 text-center font-bold">{entry.date}</Text>
-              <Text className="w-1/3 text-center font-bold">{entry.shift}</Text>
+              <Text className="w-1/3 text-center font-bold ">
+                {entry.shift}
+              </Text>
             </View>
           ))}
         </View>
