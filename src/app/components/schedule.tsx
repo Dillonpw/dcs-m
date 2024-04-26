@@ -66,80 +66,75 @@ const Schedule = () => {
   return (
     <View
       style={{ paddingTop: top }}
-      className="mb-11 mt-11 flex flex-1 gap-4 bg-white dark:bg-black"
+      className="mb-11 mt-11 flex flex-1 gap-1 bg-white dark:bg-black"
     >
-      <View className="flex-row justify-center">
-        <Text className="mr-4 text-xl text-black dark:text-white">
-          Work Days:
-        </Text>
-        <TextInput
-          className="w-[50px] rounded-lg border-2 border-gray-500 text-center text-xl text-black dark:text-white"
-          keyboardType="numeric"
-          placeholder="4"
-          maxLength={2}
-          value={workDays}
-          onChangeText={setWorkDays}
-        />
+      <View className="m-4 gap-2 rounded-2xl border-4 border-gray-300 bg-slate-100 p-4 dark:bg-gray-500">
+        <View className="flex-row justify-center">
+          <Text className="mr-4 text-xl text-black ">Work Days:</Text>
+          <TextInput
+            className="w-[50px] rounded-lg border-2 border-gray-500 py-1 text-center text-xl text-black dark:bg-black dark:text-white"
+            placeholder="4"
+            maxLength={2}
+            value={workDays}
+            onChangeText={setWorkDays}
+          />
+        </View>
+        <View className="flex-row justify-center">
+          <Text className="mr-8 text-xl text-black ">Off Days:</Text>
+          <TextInput
+            className="w-[50px] rounded-lg border-2 border-gray-500 py-1 text-center text-xl text-black dark:bg-black dark:text-white"
+            keyboardType="numeric"
+            maxLength={2}
+            placeholder="2"
+            value={offDays}
+            onChangeText={setOffDays}
+          />
+        </View>
+        <View className="flex-row justify-center text-black ">
+          <Text className="mr-4 text-xl text-black ">Total Days:</Text>
+          <TextInput
+            className="w-[50px] rounded-lg border-2 border-gray-500 py-1 text-center text-xl text-black dark:bg-black dark:text-white"
+            keyboardType="numeric"
+            maxLength={3}
+            placeholder="90"
+            value={totalDays}
+            onChangeText={setTotalDays}
+          />
+        </View>
+        <View className="mr-3 flex-col items-center justify-center text-black ">
+          <Text className="text-xl text-black ">Start Date:</Text>
+          <DateTimePicker
+            value={startDate}
+            mode="date"
+            display="calendar"
+            onChange={(event, selectedDate) => {
+              const currentDate = selectedDate || startDate;
+              setShowPicker(Platform.OS === "ios");
+              setStartDate(currentDate);
+            }}
+          />
+        </View>
+        <View className="flex items-center justify-center">
+          <Pressable
+            className="flex items-center justify-center rounded-lg border-2 border-black bg-blue-200 px-11 py-4 shadow-sm dark:border-gray-200"
+            onPress={handleGenerateSchedule}
+          >
+            <Text className="text-center text-xl">Show</Text>
+          </Pressable>
+        </View>
       </View>
-      <View className="flex-row justify-center">
-        <Text className="mr-8 text-xl text-black dark:text-white">
-          Off Days:
-        </Text>
-        <TextInput
-          className="w-[50px] rounded-lg border-2 border-gray-500 text-center text-xl text-black dark:text-white"
-          keyboardType="numeric"
-          maxLength={2}
-          placeholder="2"
-          value={offDays}
-          onChangeText={setOffDays}
-        />
-      </View>
-      <View className="flex-row justify-center text-black dark:text-white">
-        <Text className="mr-4 text-xl text-black dark:text-white">
-          Total Days:
-        </Text>
-        <TextInput
-          className="w-[50px] rounded-lg border-2 border-gray-500 text-center text-xl text-black dark:text-white"
-          keyboardType="numeric"
-          maxLength={3}
-          placeholder="90"
-          value={totalDays}
-          onChangeText={setTotalDays}
-        />
-      </View>
-      <View className="mr-3 flex-col items-center justify-center text-black dark:text-white">
-        <Text className="text-xl text-black dark:text-white">Start Date:</Text>
-        <DateTimePicker
-          value={startDate}
-          mode="date"
-          display="calendar"
-          onChange={(event, selectedDate) => {
-            const currentDate = selectedDate || startDate;
-            setShowPicker(Platform.OS === "ios");
-            setStartDate(currentDate);
-          }}
-        />
-      </View>
-      <View className="flex items-center justify-center">
-        <Pressable
-          className="flex items-center justify-center rounded-lg border-2 border-black bg-blue-200 px-11 py-4 shadow-sm dark:border-gray-200"
-          onPress={handleGenerateSchedule}
-        >
-          <Text className="text-center text-xl">Show</Text>
-        </Pressable>
-      </View>
-      <ScrollView className="m-4 rounded-2xl border-4 border-gray-300">
+      <ScrollView className="m-4 rounded-2xl border-4 border-gray-300 bg-slate-100 dark:bg-gray-500 dark:text-black">
         <View className="grid grid-cols-3 gap-2 p-4">
           <View className="flex flex-row justify-between">
-            <Text className="m-4 font-bold dark:text-white">Week Day</Text>
-            <Text className=" m-4 font-bold dark:text-white">Date</Text>
-            <Text className="m-4 font-bold dark:text-white">On/Off</Text>
+            <Text className="m-4 font-bold">Week Day</Text>
+            <Text className=" m-4 font-bold">Date</Text>
+            <Text className="m-4 font-bold">On/Off</Text>
           </View>
           {/* Data Entries */}
           {schedule.map((entry, index) => (
             <View
               key={index}
-              className="flex w-full flex-row justify-between bg-slate-100 p-4"
+              className="flex w-full flex-row justify-between rounded-lg border-2 bg-slate-100 p-4"
             >
               <Text className="w-1/3 text-center font-bold ">
                 {entry.dayOfWeek}
