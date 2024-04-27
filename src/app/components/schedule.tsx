@@ -68,7 +68,7 @@ const Schedule = () => {
       style={{ paddingTop: top }}
       className="mb-11 mt-11 flex flex-1 gap-1 bg-white dark:bg-black"
     >
-      <View className="m-4 gap-2 rounded-2xl border-4 border-gray-300 bg-slate-100 p-4 dark:bg-gray-500">
+      <View className="m-4 gap-2 rounded-2xl border-4 border-gray-300 bg-slate-100 p-3 dark:bg-gray-500">
         <View className="flex-row justify-center">
           <Text className="mr-4 text-xl text-black ">Work Days:</Text>
           <TextInput
