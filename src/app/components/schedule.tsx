@@ -66,9 +66,9 @@ const Schedule = () => {
   return (
     <View
       style={{ paddingTop: top }}
-      className="mb-11 mt-11 flex flex-1 gap-1 bg-white dark:bg-black"
+      className="mb-11 mt-2 flex flex-1 gap-1 bg-white dark:bg-black"
     >
-      <View className="m-4 gap-2 rounded-2xl border-4 border-gray-300 bg-slate-100 p-3 dark:bg-gray-500">
+      <View className="m-4 gap-2 rounded-2xl p-4 dark:bg-gray-500">
         <View className="flex-row justify-center">
           <Text className="mr-4 text-xl text-black ">Work Days:</Text>
           <TextInput
@@ -123,7 +123,7 @@ const Schedule = () => {
           </Pressable>
         </View>
       </View>
-      <ScrollView className="m-4 rounded-2xl border-4 border-gray-300 bg-slate-100 dark:bg-gray-500 dark:text-black">
+      <ScrollView className="m-4 rounded-2xl  bg-slate-100 dark:bg-gray-500 dark:text-black">
         <View className="grid grid-cols-3 gap-2 p-4">
           <View className="flex flex-row justify-between">
             <Text className="m-4 font-bold">Week Day</Text>
